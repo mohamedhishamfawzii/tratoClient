@@ -1,0 +1,23 @@
+.item{
+  right: 20px;
+
+  left: 20px;
+  top: 20px;
+
+
+  display: inline-block;
+}
+.inline{
+
+  display:table;
+  margin:0 auto;
+  height: 50px;
+  top: 20px;
+}
+div{
+  background-color: #8e0000;
+}
+.select{
+  background-color: #8e0000;
+  color: white;
+}
