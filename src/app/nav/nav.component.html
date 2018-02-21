@@ -1,0 +1,15 @@
+<ul nz-menu [nzMode]="'horizontal'"nzTheme='dark' class="nav">
+  <li nz-menu-item><i></i>  Home</li>
+  <li nz-menu-item><i></i>  Feeds</li>
+  <li nz-menu-item><i></i>  About Trato</li>
+  <li nz-menu-item><i></i>  Customer Service</li>
+  <button nz-button [nzType]="'primary'" (click)="showIn()">
+    <span>Sign in</span>
+  </button>
+</ul>
+<nz-modal [nzVisible]="signin" [nzTitle]="'SIGN IN'" [nzContent]="modalContent" nzCancelText="close" nzOkText="Sign in" (nzOnCancel)="handleCancel($event)" (nzOnOk)="handleOk($event)">
+    <ng-template #modalContent>
+ <app-signin></app-signin>
+  </ng-template>
+</nz-modal>
+
