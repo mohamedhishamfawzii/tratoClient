@@ -8,14 +8,16 @@ import {NzModalService} from 'ng-zorro-antd';
 })
 export class NavComponent implements OnInit {
   signin = false;
-
+  selectedOption;
+    searchOptions;
+    searchOptions2;
   showIn = () => {
     this.signin = true;
 
   }
 
   handleOk = (e) => {
-    console.log('点击了确定');
+    console.log('test');
 
     this.signin = false;
   }
@@ -28,6 +30,20 @@ export class NavComponent implements OnInit {
   constructor(private confirmServ: NzModalService) { }
 
   ngOnInit() {
+    setTimeout(_ => {
+     this.searchOptions = [
+       { value: 'ar', label: 'Arabic' },
+       { value: 'en', label: 'English' },
+
+     ];
+     this.searchOptions2 = [
+       { value: 'egp', label: 'EGP' },
+       { value: 'usd', label: 'USD' },
+
+     ];
+   }, 100);
+
+
   }
 
 }
