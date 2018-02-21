@@ -1,0 +1,24 @@
+:host ::ng-deep .ant-layout-content {
+  background: #ffffff;
+  color: #fff;
+
+}
+
+:host ::ng-deep .ant-layout-header, :host ::ng-deep .ant-layout-footer {
+  background: #ffffff;
+  color: #000000;
+  text-align: center;
+}
+
+:host ::ng-deep .ant-layout-footer {
+  line-height: 1.5;
+}
+
+:host > .ant-layout {
+  text-align: center;
+}
+
+:host ::ng-deep .ant-layout-sider {
+  background: #ffffff;
+
+}
