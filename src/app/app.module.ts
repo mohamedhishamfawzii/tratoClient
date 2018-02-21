@@ -9,8 +9,6 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { SigninComponent } from './signin/signin.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminNavigationComponent } from './admin-navigation/admin-navigation.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminSellerAddComponent } from './admin-seller-add/admin-seller-add.component';
 import { AdminCat1AddComponent } from './admin-cat1-add/admin-cat1-add.component';
@@ -28,7 +26,8 @@ const appRoutes: Routes = [
   { path: 'admin/users/add', component: AdminUserAddComponent},
   { path: 'admin/cat1/add', component: AdminCat1AddComponent},
   { path: 'admin/cat2/add', component: AdminCat2AddComponent},
-  { path: 'admin/branches/add', component: AdminBranchesAddComponent}
+  { path: 'admin/branches/add', component: AdminBranchesAddComponent},
+  { path: '', component: MainComponent}
 ];
 
 @NgModule({
