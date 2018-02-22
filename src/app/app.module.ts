@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-
+import { OnsenModule } from 'ngx-onsenui';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -20,6 +20,7 @@ import { SelectComponent } from './select/select.component';
 import { MainComponent } from './main/main.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { MenuComponent } from './menu/menu.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 const appRoutes: Routes = [
   { path: 'admin/seller/add', component: AdminSellerAddComponent },
@@ -53,13 +54,16 @@ const appRoutes: Routes = [
     , NgZorroAntdModule.forRoot(), FormsModule ,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule,
+    NoopAnimationsModule, OnsenModule ,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true}
     )
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent] ,
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
+  ]
 })
 export class AppModule { }

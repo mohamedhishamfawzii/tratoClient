@@ -1,26 +1,12 @@
-.nav{
-  background-color: #c43e00;
 
-
-
-}
 button{
   position: absolute;
   right: 10px;
   top: 18px;
 
 }
-.item{
-  right: 20px;
+.spano{
+  width: 400px;
+  float: left;
+}
 
-  left: 20px;
- color: white;
-  display: inline-block;
-}
-.inline{
-  display: inline-block;
-}
-.line{
-  background-color:#c43e00;
-  height: 10px;
-}

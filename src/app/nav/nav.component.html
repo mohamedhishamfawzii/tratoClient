@@ -1,33 +1,28 @@
-<ul >
-
-<span class="inline">
 
 
-    <app-select></app-select>
-    <nz-dropdown class=" item">
-      <a class="ant-dropdown-link" nz-dropdown>
-        Language <i class="anticon anticon-down"></i>
-      </a>
-      <ul nz-menu>
-        <li nz-menu-item>
-          <a target="_blank" >Arabic</a>
-        </li>
-        <li nz-menu-item>
-           <a target="_blank" >English</a>
-        </li>
+<div class="spano">
+  <select name="Language" class="select-input" style="top: 15px; color: white">
+    <option>English</option>
+    <option>Arabic</option>
+    <option>French</option>
+  </select>
 
-      </ul>
-    </nz-dropdown>
+  <select name="Currancy" class="select-input" style="top: 15px;left: 10px; color: white">
+    <option>EGP</option>
+    <option>USD</option>
+    <option>EUR</option>
+  </select>
+
+  <div style="text-align: center; margin: 10px; position: absolute;
+  right: 10px;
+  top: 15px;">
+    <ons-button (click)="showIn()">Sign in</ons-button>
+  </div>
 
 
+</div>
 
-       </span>
 
-  <button nz-button [nzType]="'primary'" (click)="showIn()">
-    <span>Sign in</span>
-  </button>
-
-</ul>
 
 
 <nz-modal [nzVisible]="signin" [nzTitle]="'SIGN IN'" [nzContent]="modalContent" nzCancelText="close" nzOkText="Sign in" (nzOnCancel)="handleCancel($event)" (nzOnOk)="handleOk($event)">
