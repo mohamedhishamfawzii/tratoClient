@@ -5,6 +5,7 @@ import {
   Validators,
   FormControl
 } from '@angular/forms';
+import {NzMessageService} from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-admin-user-add',
@@ -20,14 +21,19 @@ export class AdminUserAddComponent implements OnInit {
     email: new FormControl(),
     type: new FormControl()
   });
+  isLoading = false;
 
-  constructor() { }
+  constructor(private _message: NzMessageService) { }
 
   ngOnInit() {
   }
 
   _submitNewUser(): void {
+    this.isLoading = true;
+    this._message.info('Adding User');
     console.log(this.userForm.value);
+    this._message.info('User Added Successfully !');
+    this.isLoading = false;
   }
 
 }

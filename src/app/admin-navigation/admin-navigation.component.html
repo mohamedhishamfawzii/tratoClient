@@ -1,32 +1,35 @@
 <ul nz-menu [nzMode]="'inline'">
-      <li nz-submenu [(nzOpen)]="isOpenOne" (nzOpenChange)="openChange('one')">
-        <span title><i class="anticon anticon-mail"></i>Seller</span>
-        <ul>
-          <li nz-menu-item><a href="/admin/seller/add">Add</a></li>
-        </ul>
-      </li>
-      <li nz-submenu [(nzOpen)]="isOpenTwo" (nzOpenChange)="openChange('two')">
-        <span title><i class="anticon anticon-appstore"></i>Category 1</span>
-        <ul>
-          <li nz-menu-item><a href="/admin/cat1/add">Add</a></li>
-        </ul>
-      </li>
-      <li nz-submenu [(nzOpen)]="isOpenThree" (nzOpenChange)="openChange('three')">
-        <span title><i class="anticon anticon-setting"></i>Category 2</span>
-        <ul>
-          <li nz-menu-item><a href="/admin/cat2/add">Add</a></li>
-        </ul>
-      </li>
-      <li nz-submenu [(nzOpen)]="isOpenFour" (nzOpenChange)="openChange('four')">
-        <span title><i class="anticon anticon-setting"></i>Users</span>
-        <ul>
-          <li nz-menu-item><a href="/admin/users/add">Add</a></li>
-        </ul>
-      </li>
-      <li nz-submenu [(nzOpen)]="isOpenFive" (nzOpenChange)="openChange('five')">
-        <span title><i class="anticon anticon-setting"></i>Branches</span>
-        <ul>
-          <li nz-menu-item><a href="/admin/branches/add">Add</a></li>
-        </ul>
-      </li>
+  <li nz-submenu [(nzOpen)]="isOpenOne" (nzOpenChange)="openChange('one')">
+    <span title><i class="anticon anticon-mail"></i>Seller</span>
+    <ul>
+      <li nz-menu-item><a href="/admin/seller/add"><i class="anticon anticon-plus"></i> Add</a></li>
     </ul>
+  </li>
+  <li nz-submenu [(nzOpen)]="isOpenTwo" (nzOpenChange)="openChange('two')">
+    <span title><i class="anticon anticon-appstore"></i>Category 1</span>
+    <ul>
+      <li nz-menu-item><a href="/admin/cat1/add"><i class="anticon anticon-plus"></i> Add</a></li>
+    </ul>
+  </li>
+  <li nz-submenu [(nzOpen)]="isOpenThree" (nzOpenChange)="openChange('three')">
+    <span title><i class="anticon anticon-setting"></i>Category 2</span>
+    <ul>
+      <li nz-menu-item><a href="/admin/cat2/add"><i class="anticon anticon-plus"></i> Add</a></li>
+    </ul>
+  </li>
+  <li nz-submenu [(nzOpen)]="isOpenFour" (nzOpenChange)="openChange('four')">
+    <span title><i class="anticon anticon-setting"></i>Users</span>
+    <ul>
+      <li nz-menu-item><a href="/admin/users/add"><i class="anticon anticon-plus"></i> Add</a></li>
+    </ul>
+  </li>
+  <li nz-submenu [(nzOpen)]="isOpenFive" (nzOpenChange)="openChange('five')">
+    <span title><i class="anticon anticon-setting"></i>Branches</span>
+    <ul>
+      <li nz-menu-item><a href="/admin/branches/add"><i class="anticon anticon-plus"></i> Add</a></li>
+    </ul>
+  </li>
+  <li nz-menu-item>
+    <a href="/"><i class="anticon anticon-home"></i> Return to client</a>
+  </li>
+</ul>

@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl
+} from '@angular/forms';
 
 @Component({
   selector: 'app-admin-cat2-add',
@@ -7,9 +13,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminCat2AddComponent implements OnInit {
 
+  cat2Form = new FormGroup({
+    name: new FormControl(),
+    parent_id: new FormControl()
+  });
   constructor() { }
 
   ngOnInit() {
   }
 
+  _submitNewCat2(): void {
+    console.log(this.cat2Form.value);
+  }
 }
