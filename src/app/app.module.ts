@@ -1,7 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+
 import { OnsenModule } from 'ngx-onsenui';
+
+import { HttpClientModule } from '@angular/common/http';
+
+
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -55,6 +60,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     BrowserAnimationsModule,
     NoopAnimationsModule, OnsenModule ,
+    NoopAnimationsModule,
+    HttpClientModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true}

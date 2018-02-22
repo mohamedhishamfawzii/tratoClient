@@ -1,3 +1,50 @@
-<p>
-  admin-cat2-add works!
-</p>
+<nz-layout>
+  <nz-sider>
+    <app-admin-navigation></app-admin-navigation>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <h1>Add New Category 2</h1>
+    </nz-header>
+    <nz-content>
+      <form nz-form [formGroup]="cat2Form" (ngSubmit)="_submitNewCat2()">
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+            <label for="name" nz-form-item-required>Name</label>
+          </div>
+          <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+            <nz-input [nzSize]="'large'" formControlName="name" [nzId]="'email'"></nz-input>
+            <!-- <div nz-form-explain *ngIf="getFormControl('email').dirty&&getFormControl('email').hasError('email')">The input is not valid E-mail!</div> -->
+          </div>
+        </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+          <label for="type" nz-form-item-required>Select Category 1</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+          <nz-select formControlName="parent_id" [nzPlaceHolder]="'Select Category 1'" nzAllowClear>
+            <nz-option nzLabel="Admin" nzValue="admin"></nz-option>
+            <nz-option nzLabel="Seller" nzValue="seller"></nz-option>
+            <nz-option nzLabel="Client" nzValue="client"></nz-option>
+          </nz-select>
+        </div>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+          <label for="img" nz-form-item-required>Select Image</label>
+        </div>
+        <nz-upload nzAction="https://jsonplaceholder.typicode.com/posts/">
+          <button nz-button>
+            <i class="anticon anticon-upload"></i><span>Click to Upload</span>
+          </button>
+        </nz-upload>
+      </div>
+      <div nz-form-item nz-row>
+        <div nz-form-control nz-col [nzSpan]="14" [nzOffset]="6">
+          <button nz-button [nzSize]="'large'" [nzType]="'primary'" [nzLoading]="isLoading">Submit</button>
+        </div>
+      </div>
+      </form>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
