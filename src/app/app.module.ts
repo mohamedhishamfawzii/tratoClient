@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 import { OnsenModule } from 'ngx-onsenui';
 
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+
 import { Http } from '@angular/http';
 
 
@@ -27,6 +27,7 @@ import { MainComponent } from './main/main.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { MenuComponent } from './menu/menu.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {MainService} from './main/main.service';
 
 import { UserService } from './admin-user-add/admin-user-add.service';
 import { CategoryService } from './admin-cat1-add/cat1.service';
@@ -65,9 +66,9 @@ const appRoutes: Routes = [
     , NgZorroAntdModule.forRoot(), FormsModule ,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    NoopAnimationsModule, OnsenModule ,
+    NoopAnimationsModule,  HttpClientModule,
     NoopAnimationsModule,
-    HttpClientModule,
+    OnsenModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true}
