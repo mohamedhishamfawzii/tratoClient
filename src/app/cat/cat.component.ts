@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Category} from '../classes/category';
 
 @Component({
   selector: 'app-cat',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cat.component.css']
 })
 export class CatComponent implements OnInit {
-
+categores: Category [];
   constructor() { }
 
   ngOnInit() {

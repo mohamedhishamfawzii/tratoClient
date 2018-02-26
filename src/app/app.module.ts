@@ -26,6 +26,7 @@ import { MainComponent } from './main/main.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { MenuComponent } from './menu/menu.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {MainService} from './main/main.service';
 
 const appRoutes: Routes = [
   { path: 'admin/seller/add', component: AdminSellerAddComponent },
