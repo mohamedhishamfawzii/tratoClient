@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 import {NzModalService} from 'ng-zorro-antd';
 
 @Component({
@@ -18,7 +19,7 @@ export class NavComponent implements OnInit {
 
   handleOk = (e) => {
     console.log('test');
-
+    this.router.navigateByUrl('admin/seller/add');
     this.signin = false;
   }
 
@@ -27,7 +28,7 @@ export class NavComponent implements OnInit {
 
     this.signin = false;
   }
-  constructor(private confirmServ: NzModalService) { }
+  constructor(private confirmServ: NzModalService, private router: Router) { }
 
   ngOnInit() {
     setTimeout(_ => {

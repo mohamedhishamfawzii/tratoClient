@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 
 import { OnsenModule } from 'ngx-onsenui';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 
 
 import { NgZorroAntdModule } from 'ng-zorro-antd';
@@ -26,6 +27,11 @@ import { MainComponent } from './main/main.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { MenuComponent } from './menu/menu.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+import { UserService } from './admin-user-add/admin-user-add.service';
+import { CategoryService } from './admin-cat1-add/cat1.service';
+import { BranchService } from './admin-branches-add/branches.service';
+import { SellerService } from './admin-seller-add/admin-seller-add.service';
 
 const appRoutes: Routes = [
   { path: 'admin/seller/add', component: AdminSellerAddComponent },
@@ -67,7 +73,7 @@ const appRoutes: Routes = [
       { enableTracing: true}
     )
   ],
-  providers: [],
+  providers: [ UserService, CategoryService, HttpClient, BranchService, SellerService ],
   bootstrap: [AppComponent] ,
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

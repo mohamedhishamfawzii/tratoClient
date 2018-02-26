@@ -19,12 +19,39 @@
         </div>
         <div nz-form-item nz-row>
             <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
-              <label for="contact" nz-form-item-required>Contacts</label>
+              <label for="contact" nz-form-item-required>Details</label>
             </div>
             <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
-              <nz-input nzType="textarea" [nzAutosize]="contactSize" formControlName="contacts" [nzId]="'contact'"></nz-input>
+              <nz-input nzType="textarea" [nzAutosize]="contactSize" formControlName="details" [nzId]="'contact'"></nz-input>
               <!-- <div nz-form-explain *ngIf="getFormControl('email').dirty&&getFormControl('email').hasError('email')">The input is not valid E-mail!</div> -->
             </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+            <label for="contact1" nz-form-item-required>Contacts</label>
+          </div>
+          <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+            <nz-input [nzSize]="'large'" formControlName="cont1" [nzId]="'cont1'"></nz-input>
+            <!-- <div nz-form-explain *ngIf="getFormControl('email').dirty&&getFormControl('email').hasError('email')">The input is not valid E-mail!</div> -->
+          </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+            <label for="contact2" >Contacts</label>
+          </div>
+          <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+            <nz-input [nzSize]="'large'" formControlName="cont2" [nzId]="'cont2'"></nz-input>
+            <!-- <div nz-form-explain *ngIf="getFormControl('email').dirty&&getFormControl('email').hasError('email')">The input is not valid E-mail!</div> -->
+          </div>
+        </div>
+        <div nz-form-item nz-row>
+          <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+            <label for="contact3" >Contacts</label>
+          </div>
+          <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+            <nz-input [nzSize]="'large'" formControlName="cont3" [nzId]="'cont3'"></nz-input>
+            <!-- <div nz-form-explain *ngIf="getFormControl('email').dirty&&getFormControl('email').hasError('email')">The input is not valid E-mail!</div> -->
+          </div>
         </div>
         <form nz-form formGroupName="location" >
           <div nz-form-item nz-row>

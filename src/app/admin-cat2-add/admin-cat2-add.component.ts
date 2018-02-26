@@ -5,6 +5,8 @@ import {
   Validators,
   FormControl
 } from '@angular/forms';
+import {CategoryService} from './../admin-cat1-add/cat1.service';
+import {NzMessageService} from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-admin-cat2-add',
@@ -12,17 +14,27 @@ import {
   styleUrls: ['./admin-cat2-add.component.css']
 })
 export class AdminCat2AddComponent implements OnInit {
-
+  isLoading = false;
   cat2Form = new FormGroup({
     name: new FormControl(),
     parent_id: new FormControl()
   });
-  constructor() { }
+  constructor(private _message: NzMessageService, private categoryService: CategoryService) { }
 
   ngOnInit() {
   }
 
   _submitNewCat2(): void {
-    console.log(this.cat2Form.value);
+    this._message.info('Adding Subcategory');
+    this.isLoading = true;
+    const body = {
+      name: this.cat2Form.value.name,
+      parent_category: this.cat2Form.value.parent_id,
+      main_type: false
+    };
+    this.categoryService.addCat2(body, this.cat2Form.value.parent_id).then(res => {
+      this.isLoading = false;
+      console.log(res);
+    });
   }
 }

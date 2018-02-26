@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UserService {
-  constructor (private http: Http) { }
+  constructor (private http: HttpClient) { }
 
   addUser(data): Promise<any> {
     const url = `user/`;

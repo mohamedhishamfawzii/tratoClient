@@ -20,7 +20,10 @@ export class AdminUserAddComponent implements OnInit {
     username: new FormControl(),
     password: new FormControl(),
     email: new FormControl(),
-    type: new FormControl()
+    type: new FormControl(),
+    cont1: new FormControl(),
+    cont2: new FormControl(),
+    cont3: new FormControl()
   });
   isLoading = false;
 
@@ -33,8 +36,24 @@ export class AdminUserAddComponent implements OnInit {
     this.isLoading = true;
     this._message.info('Adding User');
     console.log(this.userForm.value);
-    this._message.info('User Added Successfully !');
-    this.isLoading = false;
+    const body = {
+      name: this.userForm.value.name,
+      contacts: [
+        this.userForm.value.cont1,
+        this.userForm.value.cont2,
+        this.userForm.value.cont3
+      ],
+      username: this.userForm.value.username,
+      password: this.userForm.value.password,
+      email: this.userForm.value.email,
+      user_type: this.userForm.value.type
+    };
+    console.log(body);
+    this.service.addUser(body).then(res => {
+      console.log(res);
+      this._message.info('User Added Successfully !');
+      this.isLoading = false;
+    });
   }
 
 }

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class BranchService {
-  constructor (private http: Http) { }
+  constructor (private http: HttpClient) { }
 
   addBranch(data, seller_id): Promise<any> {
     const url = `/seller/${seller_id}/branch`;

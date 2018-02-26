@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Headers, RequestOptions } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class SellerService {
-  constructor (private http: Http) { }
+  constructor (private http: HttpClient) { }
 
   addSeller(data): Promise<any> {
     const url = `/category/seller`;
