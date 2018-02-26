@@ -6,6 +6,7 @@ import {
   FormControl
 } from '@angular/forms';
 import {NzMessageService} from 'ng-zorro-antd';
+import {UserService} from './admin-user-add.service';
 
 @Component({
   selector: 'app-admin-user-add',
@@ -23,7 +24,7 @@ export class AdminUserAddComponent implements OnInit {
   });
   isLoading = false;
 
-  constructor(private _message: NzMessageService) { }
+  constructor(private _message: NzMessageService, private service: UserService) { }
 
   ngOnInit() {
   }
