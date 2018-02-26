@@ -6,27 +6,27 @@ import {HttpClient} from '@angular/common/http';
 @Injectable()
 export class MainService {
 
-  constructor(private http: Http , private httpPoster: HttpClient) { }
+  constructor(private http: HttpClient , private httpPoster: HttpClient) { }
   getMainCats(): Promise <string> {
     const url = `/category`;
-    const options = new RequestOptions();
-    return this.http.get(url, options
+
+    return this.http.get(url
     ).toPromise().then(response => {
       return response['body'] as string;
     });
   }
   getSubCats(main_id: string): Promise <string> {
     const url = `/category` + main_id + '/child';
-    const options = new RequestOptions();
-    return this.http.get(url, options
+
+    return this.http.get(url
     ).toPromise().then(response => {
       return response['body'] as string;
     });
   }
   getSellerCats(main_id: string): Promise <string> {
     const url = `/category` + main_id + '/seller';
-    const options = new RequestOptions();
-    return this.http.get(url, options
+
+    return this.http.get(url
     ).toPromise().then(response => {
       return response['body'] as string;
     });
@@ -34,8 +34,8 @@ export class MainService {
 
   getBranches(main_id: string): Promise <string> {
     const url = `/seller` + main_id + '/branch';
-    const options = new RequestOptions();
-    return this.http.get(url, options
+
+    return this.http.get(url
     ).toPromise().then(response => {
       return response['body'] as string;
     });

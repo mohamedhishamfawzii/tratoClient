@@ -74,7 +74,7 @@ const appRoutes: Routes = [
       { enableTracing: true}
     )
   ],
-  providers: [ UserService, CategoryService, HttpClient, BranchService, SellerService ],
+  providers: [ UserService, CategoryService, HttpClient, BranchService, SellerService, MainService ],
   bootstrap: [AppComponent] ,
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
