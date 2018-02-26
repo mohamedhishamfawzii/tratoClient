@@ -5,7 +5,7 @@ export class User {
   username: string;
   password: string;
   email: string;
-  id: string ;
+  _id: string ;
   constructor(name: string,
   contacts: string[],
   user_type: string,
@@ -14,7 +14,7 @@ export class User {
   email: string,
               id: string) {
     this.name = name;
-    this.id = id ;
+    this._id = id ;
     this.contacts = contacts;
     this.user_type = user_type;
     this.username = username;

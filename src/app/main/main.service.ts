@@ -16,7 +16,7 @@ export class MainService {
     });
   }
   getSubCats(main_id: string): Promise <any> {
-    const url = `/category` + main_id + '/child';
+    const url = `/category/` + main_id + '/child';
 
     return this.http.get(url
     ).toPromise().then(response => {
@@ -24,7 +24,7 @@ export class MainService {
     });
   }
   getSellerCats(main_id: string): Promise <any> {
-    const url = `/category` + main_id + '/seller';
+    const url = `/category/` + main_id + '/seller';
 
     return this.http.get(url
     ).toPromise().then(response => {
@@ -33,7 +33,7 @@ export class MainService {
   }
 
   getBranches(main_id: string): Promise <any> {
-    const url = `/seller` + main_id + '/branch';
+    const url = `/seller/` + main_id + '/branch';
 
     return this.http.get(url
     ).toPromise().then(response => {

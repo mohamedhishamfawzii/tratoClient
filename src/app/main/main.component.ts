@@ -19,53 +19,74 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
-this.viewMainCats();
-for (const parent of this.mainCats) {
-  this.viewSubCats(parent.id);
-  parent.sub_cat = this.subCats;
-  this.viewSellerCats(parent.id);
-  parent.sellers = this.sellers;
-  for (const seller of parent.sellers) {
-    this.viewBranches(seller.id);
-    seller.branches = this.branches;
+    this.viewMainCats();
   }
-  for (const child of parent.sub_cat) {
-    this.viewSellerCats(child.id);
-    child.sellers = this.sellers;
-    for (const seller of child.sellers) {
-      seller.branches = this.branches;
-    }
-  }
-}
 
-  }
   viewMainCats() {
-  this.service.getMainCats().then((res) => {
-  this.response = res.body;
-  if (res.valid) {
-    this.mainCats = this.response as Category[] ; }}
-  );
+    this.service.getMainCats().then((res) => {
+    this.response = res.body;
+    if (res.valid) {
+      this.mainCats = this.response as Category[] ;
+    }
+    for (const parent of this.mainCats) {
+      this.viewSubCats(parent._id);
+    }
+  });
 }
   viewSubCats(main: string ) {
     this.service.getSubCats(main).then((res) => {
       this.response = res.body;
       if (res.valid) {
-        this.subCats = this.response as Category[] ; }}
+        this.subCats = this.response as Category[] ; }
+        for (const parent of this.mainCats) {
+          parent.sub_cat = this.subCats;
+        //  this.viewSellerCats(parent._id);
+
+        }
+        console.log("qsdwqdqqwewe", this.mainCats);
+      }
     );
   }
-  viewSellerCats(main: string ) {
-    this.service.getSellerCats(main).then((res) => {
-      this.response = res.body;
-      if (res.valid) {
-        this.sellers = this.response as Seller[] ; }}
-    );
-  }
-  viewBranches(main: string ) {
-    this.service.getBranches(main).then((res) => {
-      this.response = res.body;
-      if (res.valid) {
-        this.branches = this.response as Branch[] ; }}
-    );
-  }
+  // viewSellerCats(main: string ) {
+  //   this.service.getSellerCats(main).then((res) => {
+  //     this.response = res.body;
+  //     if (res.valid) {
+  //       this.sellers = this.response as Seller[] ; }
+  //       for (const parent of this.mainCats) {
+  //         parent.sellers = this.sellers;
+  //         for (const seller of parent.sellers) {
+  //           this.viewBranches(seller._id);
+  //           // seller.branches = this.branches;
+  //         }
+  //         for (const child of parent.sub_cat) {
+  //           this.viewSellerCats(child._id);
+  //           child.sellers = this.sellers;
+  //           for (const seller of child.sellers) {
+  //             seller.branches = this.branches;
+  //           }
+  //         }
+  //     }}
+  //   );
+  // }
+  // viewBranches(main: string ) {
+  //   this.service.getBranches(main).then((res) => {
+  //     this.response = res.body;
+  //     if (res.valid) {
+  //       this.branches = this.response as Branch[] ; }
+  //       for (const parent of this.mainCats) {
+  //       for (const seller of parent.sellers) {
+  //         seller.branches = this.branches;
+  //       }
+  //       // for (const child of parent.sub_cat) {
+  //       //   this.viewSellerCats(child.id);
+  //       //   child.sellers = this.sellers;
+  //       //   for (const seller of child.sellers) {
+  //       //     seller.branches = this.branches;
+  //       //   }
+  //       // }
+  //     }
+  //     }
+  //   );
+  // }
 
 }
