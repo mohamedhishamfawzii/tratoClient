@@ -4,7 +4,11 @@
   padding-bottom: 0px;
   padding-top: 0px;
   background-color: #8e0000;
+  overflow: scroll;
 }
 .ant-layout-content{
   padding-top: 0px;
+  overflow: scroll;
+
+
 }
