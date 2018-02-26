@@ -8,6 +8,7 @@ import {Category} from '../classes/category';
 })
 export class CatComponent implements OnInit {
 categores: Category [];
+  nzTabPosition = 'left';
   constructor() { }
 
   ngOnInit() {
