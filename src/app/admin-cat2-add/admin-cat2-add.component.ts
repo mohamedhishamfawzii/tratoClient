@@ -6,6 +6,7 @@ import {
   FormControl
 } from '@angular/forms';
 import {CategoryService} from './../admin-cat1-add/cat1.service';
+import {MainService} from './../main/main.service';
 import {NzMessageService} from 'ng-zorro-antd';
 
 @Component({
@@ -15,13 +16,20 @@ import {NzMessageService} from 'ng-zorro-antd';
 })
 export class AdminCat2AddComponent implements OnInit {
   isLoading = false;
+  categories = [];
   cat2Form = new FormGroup({
     name: new FormControl(),
     parent_id: new FormControl()
   });
-  constructor(private _message: NzMessageService, private categoryService: CategoryService) { }
+  constructor(private _message: NzMessageService, private categoryService: CategoryService, private mainService: MainService) { }
 
   ngOnInit() {
+    this.mainService.getMainCats().then(res => {
+      // console.log(res);
+      // const cats = JSON.parse(res);
+      console.log("ACACC", res.body);
+      this.categories = res.body;
+    });
   }
 
   _submitNewCat2(): void {

@@ -41,29 +41,29 @@ for (const parent of this.mainCats) {
   }
   viewMainCats() {
   this.service.getMainCats().then((res) => {
-  this.response = JSON.parse(res)['response'] ;
-  if (JSON.parse(res)['valid']) {
+  this.response = res.body;
+  if (res.valid) {
     this.mainCats = this.response as Category[] ; }}
   );
 }
   viewSubCats(main: string ) {
     this.service.getSubCats(main).then((res) => {
-      this.response = JSON.parse(res)['response'] ;
-      if (JSON.parse(res)['valid']) {
+      this.response = res.body;
+      if (res.valid) {
         this.subCats = this.response as Category[] ; }}
     );
   }
   viewSellerCats(main: string ) {
     this.service.getSellerCats(main).then((res) => {
-      this.response = JSON.parse(res)['response'] ;
-      if (JSON.parse(res)['valid']) {
+      this.response = res.body;
+      if (res.valid) {
         this.sellers = this.response as Seller[] ; }}
     );
   }
   viewBranches(main: string ) {
     this.service.getBranches(main).then((res) => {
-      this.response = JSON.parse(res)['response'] ;
-      if (JSON.parse(res)['valid']) {
+      this.response = res.body;
+      if (res.valid) {
         this.branches = this.response as Branch[] ; }}
     );
   }

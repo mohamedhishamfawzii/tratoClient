@@ -7,37 +7,37 @@ import {HttpClient} from '@angular/common/http';
 export class MainService {
 
   constructor(private http: HttpClient , private httpPoster: HttpClient) { }
-  getMainCats(): Promise <string> {
+  getMainCats(): Promise <any> {
     const url = `/category`;
 
     return this.http.get(url
     ).toPromise().then(response => {
-      return response['body'] as string;
+      return response;
     });
   }
-  getSubCats(main_id: string): Promise <string> {
+  getSubCats(main_id: string): Promise <any> {
     const url = `/category` + main_id + '/child';
 
     return this.http.get(url
     ).toPromise().then(response => {
-      return response['body'] as string;
+      return response;
     });
   }
-  getSellerCats(main_id: string): Promise <string> {
+  getSellerCats(main_id: string): Promise <any> {
     const url = `/category` + main_id + '/seller';
 
     return this.http.get(url
     ).toPromise().then(response => {
-      return response['body'] as string;
+      return response;
     });
   }
 
-  getBranches(main_id: string): Promise <string> {
+  getBranches(main_id: string): Promise <any> {
     const url = `/seller` + main_id + '/branch';
 
     return this.http.get(url
     ).toPromise().then(response => {
-      return response['body'] as string;
+      return response;
     });
   }
 

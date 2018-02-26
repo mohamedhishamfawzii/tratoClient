@@ -23,9 +23,7 @@
         </div>
         <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
           <nz-select formControlName="parent_id" [nzPlaceHolder]="'Select Category 1'" nzAllowClear>
-            <nz-option nzLabel="Admin" nzValue="admin"></nz-option>
-            <nz-option nzLabel="Seller" nzValue="seller"></nz-option>
-            <nz-option nzLabel="Client" nzValue="client"></nz-option>
+            <nz-option *ngFor="let cat of categories" nzLabel="{{cat.name}}" nzValue="{{cat._id}}"></nz-option>
           </nz-select>
         </div>
       </div>
