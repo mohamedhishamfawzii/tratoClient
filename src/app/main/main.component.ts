@@ -3,19 +3,21 @@ import {MainService} from './main.service';
 import {Category} from '../classes/category';
 import {Seller} from '../classes/seller';
 import {Branch} from '../classes/branch';
+import index from '@angular/cli/lib/cli';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
+counter = 0 ;
   response: any ;
   nzTabPosition = 'left';
   mainCats: Category[];
-  subCats: Category[];
-  sellers: Seller [];
   branches: Branch[];
+  showBranches=false;
+  selected = 0 ;
+  selectedsub=0;
   constructor(private service: MainService) {
   }
 
@@ -24,47 +26,47 @@ export class MainComponent implements OnInit {
       this.response = res.body;
       if (res.valid) {
         this.mainCats = this.response as Category[];
-      }
-      console.log("after getting the maincats",this.mainCats);
-      for (const parent of this.mainCats) {
-        this.service.getSubCats(parent._id).then((res1) => {
-          this.response = res1.body;
-          if (res1.valid) {
-            parent.sub_cat = this.response as Category[];
-          }
-        });
-        console.log("after getting the subs in themains",this.mainCats);
-        this.service.getSellerCats(parent._id).then((res1) => {
-          this.response = res1.body;
-          if (res1.valid) {
-            parent.sellers = this.response as Seller[];
-          }
-          for (const seller of parent.sellers) {
-            this.service.getBranches(seller._id).then((res2) => {
-              this.response = res2.body;
-              if (res2.valid) {
-                seller.branches = this.response as Branch[];
-              }
-            });
-          }
-        });
-        console.log("after getting the seller and branches in the mains",this.mainCats);
-        for (const sub of parent.sub_cat) {
-          this.service.getSellerCats(sub._id).then((res1) => {
-            this.response = res1.body;
-            if (res1.valid) {
-              sub.sellers = this.response as Seller[];
-            }
-            for (const seller of sub.sellers) {
-              this.service.getBranches(seller._id).then((res2) => {
-                this.response = res2.body;
-                if (res2.valid) {
-                  seller.branches = this.response as Branch[];
-                }
-              });
-            }
-          });
-        }}
-      console.log("after getting the seller and branches in the subs ",this.mainCats);
+       // this.getSubsOfMain();
+      }});
+  }
 
-}); }}
+  getSubsOfMain() {
+    console.log("called"+this.selected);
+    this.service.getSubCats(this.mainCats[this.selected]._id).then((res) => {
+      this.response = res.body;
+      if (res.valid) {
+        this.mainCats[this.selected].sub_cat = this.response as Category[];
+      }
+    });
+  }
+  getSellerofSub(){
+    console.log("called"+this.selectedsub);
+    this.service.getSellerCats(this.mainCats[this.selected].sub_cat[this.selectedsub]._id).then((res) => {
+      this.response = res.body;
+      if (res.valid) {
+        this.mainCats[this.selected].sub_cat[this.selectedsub].sellers = this.response as Seller[];
+      }
+    });
+
+  }
+  handleOk = (e) => {
+    this.showBranches = false;
+  }
+
+  handleCancel = (e) => {
+    this.showBranches = false;
+  }
+  show(id: string) {
+    this.showBranches = true;
+    this.service.getBranches(id).then((res) => {
+      this.response = res.body;
+      if (res.valid) {
+        this.branches = this.response as Branch[];
+      }
+    });
+
+  }
+
+}
+
+

@@ -8,17 +8,31 @@
     <app-carousel></app-carousel>
     <app-menu></app-menu>
 
-    <nz-tabset [nzTabPosition]="nzTabPosition" >
+    <nz-tabset [nzTabPosition]="nzTabPosition" [(nzSelectedIndex)]="selected" (nzSelectChange)="getSubsOfMain()" >
       <nz-tab *ngFor="let cat of mainCats">
         <ng-template #nzTabHeading>
           {{cat.name}}
         </ng-template>
         <span>
-      <nz-tabset>
+      <nz-tabset [(nzSelectedIndex)]="selectedsub" (nzSelectChange)="getSellerofSub()">
         <nz-tab *ngFor="let sub of cat.sub_cat">
  <ng-template #nzTabHeading>
       {{sub.name}}
     </ng-template>
+          <span>
+              <nz-card style="width:240px" *ngFor="let seller of sub.sellers">
+      <ng-template #body>
+        <div class="custom-image">
+          <img alt="example" width="100%" src="{{seller.img_path}}"/>
+        </div>
+        <div class="custom-card">
+          <h3>{{seller.name}}</h3>
+          <p>{{seller.contacts}}</p>
+         <ons-button (click)="show(seller._id)">show branches</ons-button>
+        </div>
+      </ng-template>
+    </nz-card>
+          </span>
         </nz-tab>
       </nz-tabset>
 
@@ -26,7 +40,14 @@
       </nz-tab>
     </nz-tabset>
 
-
+    <nz-modal [nzVisible]="showBranches" [nzTitle]="'Branches'" [nzContent]="modalContent" nzCancelText="close" nzOkText="done" (nzOnCancel)="handleCancel($event)" (nzOnOk)="handleOk($event)">
+      <ng-template #modalContent>
+        <p *ngFor=" let branch of branches">
+          {{branch.location}}
+          {{branch.details}}
+        </p>
+      </ng-template>
+    </nz-modal>
 
 
   </nz-content>
