@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { CategoryService } from './cat1.service';
 import {NzMessageService} from 'ng-zorro-antd';
+import {FileUploadService} from './../file-upload.service';
 
 @Component({
   selector: 'app-admin-cat1-add',
@@ -15,10 +16,11 @@ import {NzMessageService} from 'ng-zorro-antd';
 })
 export class AdminCat1AddComponent implements OnInit {
   isLoading = false;
+  fileList;
   cat1Form = new FormGroup({
     name: new FormControl()
   });
-  constructor(private _message: NzMessageService, private categoryService: CategoryService) { }
+  constructor(private _message: NzMessageService, private categoryService: CategoryService, private fileUpload: FileUploadService) { }
 
   ngOnInit() {
   }
@@ -31,8 +33,23 @@ export class AdminCat1AddComponent implements OnInit {
       main_type: true
     }
     this.categoryService.addCat1(body).then(res => {
-      this.isLoading = false;
+      //this.isLoading = false;
       console.log(res);
+      if (res.valid) {
+        this.fileUpload.uploadFile('category', this.fileList, res.body._id).then(fileRes => {
+          console.log('asdsadsad', fileRes);
+          if (fileRes.valid){
+            this.isLoading = false;
+            this._message.info('Category Added Successfully');
+          }
+        });
+      }
     });
+  }
+
+  handleChange(event) {
+    console.log('ev fl', event.target.files);
+    this.fileList = event.target.files;
+    console.log('fl fl ', this.fileList);
   }
 }

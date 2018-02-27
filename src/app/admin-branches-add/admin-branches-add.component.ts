@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { BranchService } from './branches.service';
 import {NzMessageService} from 'ng-zorro-antd';
-
+import {FileUploadService} from './../file-upload.service';
 
 @Component({
   selector: 'app-admin-branches-add',
@@ -32,10 +32,14 @@ export class AdminBranchesAddComponent implements OnInit {
     minRows: 2,
     maxRows: 6
   };
-
-  constructor(private _message: NzMessageService, private branchService: BranchService) { }
+  file;
+  constructor(private _message: NzMessageService, private branchService: BranchService, private fileUpload: FileUploadService) { }
 
   ngOnInit() {
+  }
+
+  handleChange(event) {
+    this.file = event.target.files;
   }
 
   _submitNewBranch(): void {
@@ -56,6 +60,15 @@ export class AdminBranchesAddComponent implements OnInit {
       ]
     };
     this.branchService.addBranch(body, this.branchesForm.value.user_id).then(res => {
+      if (res.valid) {
+        this.fileUpload.uploadFile('branch', this.file, res.body._id).then(fileRes => {
+          console.log('asdsadsad', fileRes);
+          if (fileRes.valid) {
+            this.isLoading = false;
+            this._message.info('Category Added Successfully');
+          }
+        });
+      }
       console.log(res);
     });
 

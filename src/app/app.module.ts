@@ -33,6 +33,7 @@ import { UserService } from './admin-user-add/admin-user-add.service';
 import { CategoryService } from './admin-cat1-add/cat1.service';
 import { BranchService } from './admin-branches-add/branches.service';
 import { SellerService } from './admin-seller-add/admin-seller-add.service';
+import { FileUploadService } from './file-upload.service';
 
 const appRoutes: Routes = [
   { path: 'admin/seller/add', component: AdminSellerAddComponent },
@@ -74,7 +75,7 @@ const appRoutes: Routes = [
       { enableTracing: true}
     )
   ],
-  providers: [ UserService, CategoryService, HttpClient, BranchService, SellerService, MainService ],
+  providers: [ UserService, CategoryService, HttpClient, BranchService, SellerService, MainService, FileUploadService ],
   bootstrap: [AppComponent] ,
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

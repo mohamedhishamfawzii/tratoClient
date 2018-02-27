@@ -89,11 +89,7 @@
         <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
           <label for="img" nz-form-item-required>Select Image</label>
         </div>
-        <nz-upload nzAction="https://jsonplaceholder.typicode.com/posts/">
-          <button nz-button>
-            <i class="anticon anticon-upload"></i><span>Click to Upload</span>
-          </button>
-        </nz-upload>
+        <input type="file" (change)="handleChange($event)">
       </div>
       <div nz-form-item nz-row>
         <div nz-form-control nz-col [nzSpan]="14" [nzOffset]="6">
