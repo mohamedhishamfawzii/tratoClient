@@ -8,6 +8,8 @@ import {
 } from '@angular/forms';
 import { SellerService } from './admin-seller-add.service';
 import {NzMessageService} from 'ng-zorro-antd';
+import {MainService} from './../main/main.service';
+
 
 @Component({
   selector: 'app-admin-seller-add',
@@ -25,7 +27,8 @@ export class AdminSellerAddComponent implements OnInit {
     cont3: new FormControl()
   });
   isLoading = false;
-  
+  mainCats;
+  subCats = [];
   noteSize = {
     minRows: 2,
     maxRows: 6
@@ -36,9 +39,18 @@ export class AdminSellerAddComponent implements OnInit {
     maxRows: 6
   };
 
-  constructor(private _message: NzMessageService, private sellerService: SellerService) { }
+  constructor(private _message: NzMessageService, private sellerService: SellerService, private mainService: MainService) { }
 
   ngOnInit() {
+    this.mainService.getMainCats().then(mainRes => {
+      this.mainCats = mainRes.body;
+      for (const mCat of this.mainCats) {
+        this.mainService.getSubCats(mCat._id).then(subRes => {
+          this.subCats = this.subCats.concat(subRes.body);
+          console.log('FINAL CATS : ', this.mainCats, this.subCats);
+        });
+      }
+    });
   }
 
   _submitNewSeller(): void {

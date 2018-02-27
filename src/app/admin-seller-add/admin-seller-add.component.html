@@ -50,6 +50,7 @@
         </div>
         <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
           <nz-select formControlName="cat1" [nzPlaceHolder]="'Select Category 1'" nzAllowClear>
+            <nz-option *ngFor="let cat1 of mainCats" nzLabel="{{cat1.name}}" nzValue="{{cat1._id}}"></nz-option>
           </nz-select>
         </div>
       </div>
@@ -59,6 +60,7 @@
         </div>
         <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
           <nz-select formControlName="cat2" [nzPlaceHolder]="'Select Category 2'" nzAllowClear>
+            <nz-option *ngFor="let cat2 of subCats" nzLabel="{{cat2.name}}" nzValue="{{cat2._id}}"></nz-option>
           </nz-select>
         </div>
       </div>
