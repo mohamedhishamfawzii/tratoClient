@@ -8,7 +8,23 @@
     <app-carousel></app-carousel>
     <app-menu></app-menu>
 
-      <app-cat [categores]="mainCats" > </app-cat>
+    <nz-tabset [nzTabPosition]="nzTabPosition" >
+      <nz-tab *ngFor="let cat of mainCats">
+        <ng-template #nzTabHeading>
+          {{cat.name}}
+        </ng-template>
+        <span>
+      <nz-tabset>
+        <nz-tab *ngFor="let sub of cat.sub_cat">
+ <ng-template #nzTabHeading>
+      {{sub.name}}
+    </ng-template>
+        </nz-tab>
+      </nz-tabset>
+
+    </span>
+      </nz-tab>
+    </nz-tabset>
 
 
 

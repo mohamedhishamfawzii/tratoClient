@@ -11,6 +11,7 @@ import {Branch} from '../classes/branch';
 export class MainComponent implements OnInit {
 
   response: any ;
+  nzTabPosition = 'left';
   mainCats: Category[];
   subCats: Category[];
   sellers: Seller [];
@@ -19,74 +20,51 @@ export class MainComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.viewMainCats();
-  }
-
-  viewMainCats() {
     this.service.getMainCats().then((res) => {
-    this.response = res.body;
-    if (res.valid) {
-      this.mainCats = this.response as Category[] ;
-    }
-    for (const parent of this.mainCats) {
-      this.viewSubCats(parent._id);
-    }
-  });
-}
-  viewSubCats(main: string ) {
-    this.service.getSubCats(main).then((res) => {
       this.response = res.body;
       if (res.valid) {
-        this.subCats = this.response as Category[] ; }
-        for (const parent of this.mainCats) {
-          parent.sub_cat = this.subCats;
-        //  this.viewSellerCats(parent._id);
-
-        }
-        console.log("qsdwqdqqwewe", this.mainCats);
+        this.mainCats = this.response as Category[];
       }
-    );
-  }
-  // viewSellerCats(main: string ) {
-  //   this.service.getSellerCats(main).then((res) => {
-  //     this.response = res.body;
-  //     if (res.valid) {
-  //       this.sellers = this.response as Seller[] ; }
-  //       for (const parent of this.mainCats) {
-  //         parent.sellers = this.sellers;
-  //         for (const seller of parent.sellers) {
-  //           this.viewBranches(seller._id);
-  //           // seller.branches = this.branches;
-  //         }
-  //         for (const child of parent.sub_cat) {
-  //           this.viewSellerCats(child._id);
-  //           child.sellers = this.sellers;
-  //           for (const seller of child.sellers) {
-  //             seller.branches = this.branches;
-  //           }
-  //         }
-  //     }}
-  //   );
-  // }
-  // viewBranches(main: string ) {
-  //   this.service.getBranches(main).then((res) => {
-  //     this.response = res.body;
-  //     if (res.valid) {
-  //       this.branches = this.response as Branch[] ; }
-  //       for (const parent of this.mainCats) {
-  //       for (const seller of parent.sellers) {
-  //         seller.branches = this.branches;
-  //       }
-  //       // for (const child of parent.sub_cat) {
-  //       //   this.viewSellerCats(child.id);
-  //       //   child.sellers = this.sellers;
-  //       //   for (const seller of child.sellers) {
-  //       //     seller.branches = this.branches;
-  //       //   }
-  //       // }
-  //     }
-  //     }
-  //   );
-  // }
+      console.log("after getting the maincats",this.mainCats);
+      for (const parent of this.mainCats) {
+        this.service.getSubCats(parent._id).then((res1) => {
+          this.response = res1.body;
+          if (res1.valid) {
+            parent.sub_cat = this.response as Category[];
+          }
+        });
+        console.log("after getting the subs in themains",this.mainCats);
+        this.service.getSellerCats(parent._id).then((res1) => {
+          this.response = res1.body;
+          if (res1.valid) {
+            parent.sellers = this.response as Seller[];
+          }
+          for (const seller of parent.sellers) {
+            this.service.getBranches(seller._id).then((res2) => {
+              this.response = res2.body;
+              if (res2.valid) {
+                seller.branches = this.response as Branch[];
+              }
+            });
+          }
+        });
+        console.log("after getting the seller and branches in the mains",this.mainCats);
+        for (const sub of parent.sub_cat) {
+          this.service.getSellerCats(sub._id).then((res1) => {
+            this.response = res1.body;
+            if (res1.valid) {
+              sub.sellers = this.response as Seller[];
+            }
+            for (const seller of sub.sellers) {
+              this.service.getBranches(seller._id).then((res2) => {
+                this.response = res2.body;
+                if (res2.valid) {
+                  seller.branches = this.response as Branch[];
+                }
+              });
+            }
+          });
+        }}
+      console.log("after getting the seller and branches in the subs ",this.mainCats);
 
-}
+}); }}
