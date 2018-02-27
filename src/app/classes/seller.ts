@@ -6,6 +6,7 @@ export class Seller {
   main_category: string;
   _id: string ;
   sub_category: string;
+  img_path:string;
   branches: Branch [];
   constructor( name: string,
                contacts: string[],
